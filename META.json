@@ -14,6 +14,11 @@
    },
    "name" : "Alien-HIDAPI",
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "IO::Socket::SSL" : "0"
+         }
+      },
       "configure" : {
          "requires" : {
             "Alien::Base::ModuleBuild" : "0",
@@ -21,6 +26,9 @@
          }
       },
       "runtime" : {
+         "recommends" : {
+            "IO::Socket::SSL" : "0"
+         },
          "requires" : {
             "Alien::Base" : "0.030",
             "File::ShareDir" : "1.00",
@@ -40,7 +48,7 @@
    "provides" : {
       "Alien::HIDAPI" : {
          "file" : "lib/Alien/HIDAPI.pm",
-         "version" : "0.01"
+         "version" : "0.02"
       }
    },
    "release_status" : "stable",
@@ -49,6 +57,6 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }

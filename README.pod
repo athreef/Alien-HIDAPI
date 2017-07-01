@@ -12,10 +12,10 @@ Alien::HIDAPI - Perl distribution for HIDAPI
 
 =head1 PLATFORMS
     
-    Same as HIDAPI proper: Linux, FreeBSD, macOS and Windows
+Same as HIDAPI proper: Linux, FreeBSD, macOS and Windows
 
-    On Linux, you'll probably need to install libusb1 and libudev
-    by means of your distro's package manager.
+On Linux, you'll probably need to install libusb1 and libudev
+by means of your distro's package manager.
 
 =cut
 
@@ -26,6 +26,7 @@ L<http://github.com/athreef/Alien-HIDAPI>
 =head1 SEE ALSO
 
 L<Alien>
+
 L<HIDAPI|http://github.com/signal11/hidapi>
 
 =head1 AUTHOR

@@ -4,6 +4,7 @@ author:
   - 'Ahmad Fatoum <athreef@cpan.org>'
 build_requires:
   ExtUtils::CBuilder: '0'
+  IO::Socket::SSL: '0'
   Test2: '1.302015'
   Test2::Suite: '0.000030'
   Test::Alien: '0.05'
@@ -21,12 +22,14 @@ name: Alien-HIDAPI
 provides:
   Alien::HIDAPI:
     file: lib/Alien/HIDAPI.pm
-    version: '0.01'
+    version: '0.02'
+recommends:
+  IO::Socket::SSL: '0'
 requires:
   Alien::Base: '0.030'
   File::ShareDir: '1.00'
   perl: '5.008001'
 resources:
   license: http://dev.perl.org/licenses/
-version: '0.01'
+version: '0.02'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'

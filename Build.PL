@@ -10,6 +10,11 @@ my $build = Alien::Base::ModuleBuild->new(
         'Module::Build' => 0,
     },
     build_requires => {
+        # TODO: fallback to HTTP download when IO::Socket::SSL doesn't exist
+        'IO::Socket::SSL' => 0
+    },
+    recommends => {
+        'IO::Socket::SSL' => 0
     },
     test_requires => {
         'Test::More'         => 0,
