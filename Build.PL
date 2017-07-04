@@ -1,11 +1,16 @@
 use Alien::Base::ModuleBuild;
+use Alien::Autotools qw(autoconf_dir automake_dir libtool_dir);
 use Config;
+
+$ENV{PATH} = join ":", autoconf_dir, automake_dir, libtool_dir, $ENV{PATH};
+
 my $build = Alien::Base::ModuleBuild->new(
     module_name => 'Alien::HIDAPI',
     license => 'perl',
     alien_bin_requires => {
     },
     configure_requires => {
+        'Alien::Autotools' => '0.000_006',
         'Alien::Base::ModuleBuild' => 0,
         'Module::Build' => 0,
     },

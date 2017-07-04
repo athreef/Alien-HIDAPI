@@ -10,6 +10,7 @@ build_requires:
   Test::Alien: '0.05'
   Test::More: '0'
 configure_requires:
+  Alien::Autotools: 0.000_006
   Alien::Base::ModuleBuild: '0'
   Module::Build: '0'
 dynamic_config: 1
@@ -22,7 +23,7 @@ name: Alien-HIDAPI
 provides:
   Alien::HIDAPI:
     file: lib/Alien/HIDAPI.pm
-    version: '0.02'
+    version: '0.03'
 recommends:
   IO::Socket::SSL: '0'
 requires:
@@ -31,5 +32,5 @@ requires:
   perl: '5.008001'
 resources:
   license: http://dev.perl.org/licenses/
-version: '0.02'
+version: '0.03'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'

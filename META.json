@@ -21,6 +21,7 @@
       },
       "configure" : {
          "requires" : {
+            "Alien::Autotools" : "0.000_006",
             "Alien::Base::ModuleBuild" : "0",
             "Module::Build" : "0"
          }
@@ -48,7 +49,7 @@
    "provides" : {
       "Alien::HIDAPI" : {
          "file" : "lib/Alien/HIDAPI.pm",
-         "version" : "0.02"
+         "version" : "0.03"
       }
    },
    "release_status" : "stable",
@@ -57,6 +58,6 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }
