@@ -7,7 +7,7 @@ package Alien::HIDAPI;
 
 use parent 'Alien::Base';
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =pod
 
@@ -23,10 +23,7 @@ Alien::HIDAPI - Perl distribution for HIDAPI
 
 =head1 PLATFORMS
     
-Same as HIDAPI proper: Linux, FreeBSD, macOS and Windows
-
-On Linux, you'll probably need to install libusb1 and libudev
-by means of your distro's package manager.
+Same as HIDAPI proper: Linux, FreeBSD, macOS and Windows.
 
 =cut
 
@@ -40,9 +37,10 @@ L<http://github.com/athreef/Alien-HIDAPI>
 
 =head1 SEE ALSO
 
+L<HIDAPI|http://github.com/signal11/hidapi>
+
 L<Alien>
 
-L<HIDAPI|http://github.com/signal11/hidapi>
 
 =head1 AUTHOR
 

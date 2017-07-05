@@ -3,6 +3,7 @@ abstract: 'Perl distribution for HIDAPI'
 author:
   - 'Ahmad Fatoum <athreef@cpan.org>'
 build_requires:
+  Alien::Autotools: 0.000_006
   ExtUtils::CBuilder: '0'
   IO::Socket::SSL: '0'
   Test2: '1.302015'
@@ -10,7 +11,6 @@ build_requires:
   Test::Alien: '0.05'
   Test::More: '0'
 configure_requires:
-  Alien::Autotools: 0.000_006
   Alien::Base::ModuleBuild: '0'
   Module::Build: '0'
 dynamic_config: 1
@@ -23,7 +23,7 @@ name: Alien-HIDAPI
 provides:
   Alien::HIDAPI:
     file: lib/Alien/HIDAPI.pm
-    version: '0.03'
+    version: '0.04'
 recommends:
   IO::Socket::SSL: '0'
 requires:
@@ -32,5 +32,5 @@ requires:
   perl: '5.008001'
 resources:
   license: http://dev.perl.org/licenses/
-version: '0.03'
+version: '0.04'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'

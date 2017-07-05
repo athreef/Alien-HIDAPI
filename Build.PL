@@ -1,8 +1,14 @@
 use Alien::Base::ModuleBuild;
-use Alien::Autotools qw(autoconf_dir automake_dir libtool_dir);
 use Config;
+use Alien::autoconf;
+use Alien::automake;
+use Alien::libtool;
+use Alien::libudev;
+use Alien::LibUSBx;
 
-$ENV{PATH} = join ":", autoconf_dir, automake_dir, libtool_dir, $ENV{PATH};
+use Env qw( @PATH );
+
+unshift @ENV, Alien::automake->bin_dir, Alien::autoconf->bin_dir, Alien::libtool->bin_dir;
 
 my $build = Alien::Base::ModuleBuild->new(
     module_name => 'Alien::HIDAPI',
@@ -10,13 +16,20 @@ my $build = Alien::Base::ModuleBuild->new(
     alien_bin_requires => {
     },
     configure_requires => {
-        'Alien::Autotools' => '0.000_006',
         'Alien::Base::ModuleBuild' => 0,
         'Module::Build' => 0,
     },
     build_requires => {
         # TODO: fallback to HTTP download when IO::Socket::SSL doesn't exist
-        'IO::Socket::SSL' => 0
+        'IO::Socket::SSL' => 0,
+
+        "Alien::autoconf" => "0.02",
+        "Alien::automake" => "0.02",
+        "Alien::libtool" => "0.02",
+
+        $^O eq 'linux' ? ('Alien::LibUSBx' => 0,
+                          'Alien::libudev' => 0)
+                       : (),
     },
     recommends => {
         'IO::Socket::SSL' => 0
@@ -31,6 +44,9 @@ my $build = Alien::Base::ModuleBuild->new(
     requires => {
         'perl' => '5.008001',
         'Alien::Base' => '0.030',
+        $^O eq 'linux' ? ('Alien::LibUSBx' => 0,
+                          'Alien::libudev' => 0)
+                       : (),
     },
     dist_author => 'Ahmad Fatoum <athreef@cpan.org>',
     alien_name => 'HIDAPI',
@@ -45,12 +61,12 @@ my $build = Alien::Base::ModuleBuild->new(
 
     alien_build_commands => [
         './bootstrap',
-        '%c --prefix=%s',
+        '%c --prefix=%s --with-sysroot=%s',
         'make',
     ],
     alien_install_commands => ['make install'],
-    # extra_compiler_flags => Alien::CMake->config('cflags'),
-    # extra_linker_flags   => Alien::CMake->config('libs'),
+    extra_compiler_flags => [Alien::libudev->config('cflags'), Alien::LibUSBx->config('cflags')],
+    extra_linker_flags => [Alien::libudev->config('libs'), Alien::LibUSBx->config('libs')],
 );
 
 $build->create_build_script;
