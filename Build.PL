@@ -61,7 +61,7 @@ my $build = Alien::Base::ModuleBuild->new(
 
     alien_build_commands => [
         './bootstrap',
-        '%c --prefix=%s --with-sysroot=%s',
+        '%c --prefix=%s',
         'make',
     ],
     alien_install_commands => ['make install'],
