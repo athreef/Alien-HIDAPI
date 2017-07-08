@@ -7,8 +7,6 @@ package Alien::HIDAPI;
 
 use parent 'Alien::Base';
 
-our $VERSION = '0.04';
-
 =pod
 
 =encoding utf8
