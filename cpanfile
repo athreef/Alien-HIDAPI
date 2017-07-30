@@ -6,7 +6,7 @@ on 'runtime' => sub {
     requires 'Alien::Base';
     do {
         requires 'Alien::LibUSBx' => 0;
-        requires 'Alien::libudev' => 0;
+        requires 'Alien::libudev' => '0.1';
     } if $^O eq 'linux';
 };
 
@@ -22,7 +22,7 @@ on 'build' => sub {
     requires 'Alien::libtool' => '0.02';
     do {
         requires 'Alien::LibUSBx' => 0;
-        requires 'Alien::libudev' => 0;
+        requires 'Alien::libudev' => '0.1';
     } if $^O eq 'linux';
     requires 'Config';
     requires 'ExtUtils::MakeMaker';
