@@ -4,7 +4,10 @@ on 'runtime' => sub {
     requires 'warnings';
     requires 'base';
     requires 'Alien::Base';
-    requires 'Alien::libudev' => 0;
+    do {
+        requires 'Alien::LibUSBx' => 0;
+        requires 'Alien::libudev' => 0;
+    } if $^O eq 'linux';
 };
 
 on 'build' => sub {

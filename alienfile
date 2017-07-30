@@ -1,7 +1,7 @@
 use alienfile;
 
 plugin 'PkgConfig' => (
-    pkg_name => 'hidapi-libusb',
+    pkg_name =>  $^O eq 'linux' ?  'hidapi-libusb' : 'hidapi'
 );
 
 share {
@@ -10,7 +10,13 @@ share {
   requires 'Alien::libtool'  => '0.02';
   requires 'Alien::m4'       => '0.11';
 
-  do {
+  if ($^O eq 'darwin') {
+    meta->after_hook(gather_share => sub {
+      my($build) = @_;
+      $build->runtime_prop->{$_} .= '-framework CoreFoundation -framework IOKit' for qw( libs libs_static );
+
+    });
+  } elsif ($^O eq 'linux') {
     requires 'Alien::LibUSBx' => 0;
     requires 'Alien::libudev' => 0;
     
@@ -19,7 +25,7 @@ share {
       $build->runtime_prop->{$_} .= ' ' . Alien::LibUSBx->libs . ' ' . Alien::libudev->libs for qw( libs libs_static );
     });
     
-  } if $^O eq 'linux';
+  }
 
   plugin Download => (
       url => 'https://github.com/signal11/hidapi/archive/master.tar.gz'
