@@ -17,12 +17,12 @@ share {
 
     });
   } elsif ($^O eq 'linux') {
-    requires 'Alien::LibUSBx' => 0;
-    requires 'Alien::libudev' => '0.1';
+    requires 'Alien::LibUSB' => '0.2';
+    requires 'Alien::libudev' => '0.11';
     
     meta->after_hook(gather_share => sub {
       my($build) = @_;
-      $build->runtime_prop->{$_} .= ' ' . Alien::LibUSBx->libs . ' ' . Alien::libudev->libs for qw( libs libs_static );
+      $build->runtime_prop->{$_} .= ' ' . Alien::LibUSB->libs . ' ' . Alien::libudev->libs for qw( libs libs_static );
     });
     
   }
