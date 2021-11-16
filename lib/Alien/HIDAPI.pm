@@ -35,7 +35,7 @@ L<http://github.com/athreef/Alien-HIDAPI>
 
 =head1 SEE ALSO
 
-L<HIDAPI|http://github.com/signal11/hidapi>
+L<HIDAPI|http://github.com/libusb/hidapi>
 
 L<Alien>
 
